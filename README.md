@@ -1,6 +1,25 @@
 # Tax Calculation System Requirements
 
 <p style="color:red;">Important: The program is hypothetical, and the numbers are just for debugging purposes. </p>
+'''mermaid
+flowchart TD
+    A[Start] -->B{Brackets?}
+    B --> |Yes|LOOP(Loop Start)
+    LOOP --> C{Is taxableIncome <= lowerbound bracket?}
+    B -->|No|D(return)
+    C --> |Yes|E(Break)
+    C --> |No| F{Is Upper Bound Null?}
+    F --> |Yes| G(Upper limit = taxable income)
+    F --> |No| H(upperLimit = minimum of bracket.upperBound, taxableIncome)
+    G --> I(Continue)
+    H --> I
+    I --> J{if bracket.upperBound is not null and taxableIncome <= bracket.upperBound}
+    J --> |Yes|K(Break)
+    J --> |No|LOOP
+'''
+
+
+
 
 ## Functional Requirements
 
